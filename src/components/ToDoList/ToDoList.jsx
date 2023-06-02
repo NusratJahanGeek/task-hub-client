@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ToDo from "../ToDo/ToDo";
 
-const ToDoList = ({ toDos, updateTask, deleteTask, setToDos }) => {
+const ToDoList = ({ toDos, updateTask, deleteTask }) => {
   const [draggedTask, setDraggedTask] = useState(null);
   const [draggedOver, setDraggedOver] = useState(null);
 
@@ -72,18 +72,22 @@ const ToDoList = ({ toDos, updateTask, deleteTask, setToDos }) => {
         onDragLeave={handleDragLeave}
         onDrop={(event) => handleDrop(event, "Pending")}
       >
-        <h2 className="text-2xl font-bold pb-2 border-b-4">Pending</h2>
+        <h2 className="text-2xl font-bold pb-6 border-b-4 text-center">Pending</h2>
         <ul>
           {pendingTasks.map((toDo) => (
             <ToDo
-              key={toDo._id}
-              toDo={toDo}
-              handleCompleteTask={handleCompleteTask}
-              handleDeleteTask={handleDeleteTask}
-              draggable
-              onDragStart={() => handleDragStart(toDo._id)}
-              onDragEnd={handleDragEnd}
-            />
+            key={toDo._id} 
+            toDo={toDo}
+            handleCompleteTask={handleCompleteTask}
+            handleDeleteTask={handleDeleteTask}
+            draggable
+            onDragStart={() => handleDragStart(toDo._id)}
+            onDragEnd={handleDragEnd}
+            onDragOver={(event) => handleDragOver(event, toDo.status)}
+            onDragEnter={(event) => handleDragEnter(event, toDo.status)}
+            onDragLeave={handleDragLeave}
+            onDrop={(event) => handleDrop(event, toDo.status)}
+          />
           ))}
         </ul>
       </div>
@@ -94,7 +98,7 @@ const ToDoList = ({ toDos, updateTask, deleteTask, setToDos }) => {
         onDragLeave={handleDragLeave}
         onDrop={(event) => handleDrop(event, "In Progress")}
       >
-        <h2 className="text-2xl font-bold pb-2 border-b-4">In Progress</h2>
+        <h2 className="text-2xl font-bold pb-6 border-b-4 text-center">In Progress</h2>
         <ul>
           {inProgressTasks.map((toDo) => (
             <ToDo
@@ -116,7 +120,7 @@ const ToDoList = ({ toDos, updateTask, deleteTask, setToDos }) => {
         onDragLeave={handleDragLeave}
         onDrop={(event) => handleDrop(event, "Completed")}
       >
-        <h2 className="text-2xl font-bold pb-2 border-b-4">Completed</h2>
+        <h2 className="text-2xl font-bold pb-6 border-b-4 text-center">Completed</h2>
         <ul>
           {completedTasks.map((toDo) => (
             <ToDo

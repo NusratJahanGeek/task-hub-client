@@ -1,5 +1,5 @@
 const ToDo = ({ toDo, handleCompleteTask, handleDeleteTask, draggable, onDragStart, onDragEnd, onDragOver, onDragEnter, onDragLeave, onDrop }) => {
-  
+
   const handleComplete = (taskId, completed) => {
     const updatedTask = {
       ...toDo,
@@ -16,7 +16,7 @@ const handleDelete = (taskId) => {
 
   return (
     <li
-      className="flex justify-between items-center bg-white p-4 rounded mb-4 shadow"
+      className="bg-white p-4 rounded mb-4 shadow space-y-3"
       draggable={draggable}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
@@ -26,8 +26,8 @@ const handleDelete = (taskId) => {
       onDrop={onDrop}
     >
       <div>
-        <h3 className="text-lg font-semibold">{toDo.title}</h3>
-        <p className="text-sm text-gray-500">{toDo.description}</p>
+        <h3 className="text-lg font-semibold mb-2">{toDo.title}</h3>
+        <p className="text-md text-gray-500">{toDo.description}</p>
       </div>
       <div className="flex items-center">
         <input

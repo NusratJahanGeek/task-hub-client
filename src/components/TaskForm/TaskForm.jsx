@@ -43,11 +43,11 @@ const TaskForm = ({ addTask }) => {
         </h1>
         <div className="flex items-center">
           <button
-            className="ml-2 bg-blue-500 text-white px-4 py-2 rounded mt-2 flex items-center"
+            className="ml-2 text-white px-4 py-2 rounded mt-2 flex items-center"
+            style={{ backgroundColor: "#007ab5" }}
             onClick={handleFormToggler}
           >
-            <FaPlus className="mr-2" />
-            Add Task
+            Add Task <FaPlus className="ml-2" />
           </button>
         </div>
       </div>
@@ -64,7 +64,7 @@ const TaskForm = ({ addTask }) => {
               </button>
             </div>
             <form onSubmit={handleAddTask}>
-              <div className="mb-4">
+              <div className="mb-2">
                 <input
                   onChange={handleAddTitle}
                   type="text"
@@ -95,9 +95,10 @@ const TaskForm = ({ addTask }) => {
                 </select>
               </div>
               <button
+                className="text-white px-4 py-2 rounded mt-2 flex items-center"
+                style={{ backgroundColor: "#007ab5" }}
                 onClick={handleAddTask}
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
               >
                 Submit Task
               </button>

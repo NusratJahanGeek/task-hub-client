@@ -7,21 +7,30 @@ import axios from "axios";
 const Home = () => {
   const [toDos, setToDos] = useState([]);
 
-  const addTask = (task) => {
+  const addTask = (newTask) => {
+    // Update the UI immediately
+    setToDos((prevToDos) => [...prevToDos, newTask]);
+  
+    // Make the HTTP request to add the task
     axios
-      .post("http://localhost:5000/tasks", task)
-      .then((response) => {
-        const addedTask = response.data;
-        setToDos((prevToDos) => [...prevToDos, addedTask]);
-      })
-      .catch((error) => {
-        console.error("Error adding task:", error);
-      });
+    .post("https://task-hub-server.vercel.app/tasks", newTask)
+    .then((response) => {
+      // Update the UI with the added task
+      const addedTask = response.data;
+      setToDos((prevToDos) =>
+        prevToDos.map((toDo) => (toDo._id === newTask._id ? addedTask : toDo))
+      );
+    })
+    .catch((error) => {
+      console.error("Error adding task:", error);
+      // Display an error message or perform other actions
+    });
+  
   };
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/tasks")
+      .get("https://task-hub-server.vercel.app/tasks")
       .then((response) => {
         setToDos(response.data);
       })
@@ -39,7 +48,7 @@ const Home = () => {
 
     // Update the task on the server
     axios
-      .put(`http://localhost:5000/tasks/${taskId}`, updatedTask)
+      .put(`https://task-hub-server.vercel.app/tasks/${taskId}`, updatedTask)
       .catch((error) => {
         console.error("Error updating task:", error);
       });
@@ -51,7 +60,7 @@ const Home = () => {
 
     // Delete the task on the server
     axios
-      .delete(`http://localhost:5000/tasks/${taskId}`)
+      .delete(`https://task-hub-server.vercel.app/tasks/${taskId}`)
       .catch((error) => {
         console.error("Error deleting task:", error);
       });
