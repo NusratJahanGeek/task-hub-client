@@ -66,7 +66,7 @@ const ToDoList = ({ toDos, updateTask, deleteTask }) => {
 
   return (
     <div className="flex flex-col md:flex-row gap-8">
-      <div className="card bg-slate-100 p-6 flex-grow-0"
+      <div className="card bg-slate-100 p-6 flex-1"
         onDragOver={(event) => handleDragOver(event, "Pending")}
         onDragEnter={(event) => handleDragEnter(event, "Pending")}
         onDragLeave={handleDragLeave}
@@ -92,7 +92,7 @@ const ToDoList = ({ toDos, updateTask, deleteTask }) => {
         </ul>
       </div>
 
-      <div className="card bg-slate-100 p-6 flex-grow-0"
+      <div className="card bg-slate-100 p-6 flex-1"
         onDragOver={(event) => handleDragOver(event, "In Progress")}
         onDragEnter={(event) => handleDragEnter(event, "In Progress")}
         onDragLeave={handleDragLeave}
@@ -114,7 +114,7 @@ const ToDoList = ({ toDos, updateTask, deleteTask }) => {
         </ul>
       </div>
 
-      <div className="card bg-slate-100 p-6 flex-grow-0"
+      <div className="card bg-slate-100 p-6 flex-1"
         onDragOver={(event) => handleDragOver(event, "Completed")}
         onDragEnter={(event) => handleDragEnter(event, "Completed")}
         onDragLeave={handleDragLeave}
