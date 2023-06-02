@@ -36,21 +36,20 @@ const TaskForm = ({ addTask }) => {
 
   return (
     <div>
-      <div className="flex justify-center items-center mb-12 scroll-m-3">
-        <h1 className="text-4xl font-bold mr-6 flex items-center">
-          <FaTasks className="inline-block mr-4" />
-          Task Manager
-        </h1>
-        <div className="flex items-center">
-          <button
-            className="ml-2 text-white px-4 py-2 rounded mt-2 flex items-center"
-            style={{ backgroundColor: "#007ab5" }}
-            onClick={handleFormToggler}
-          >
-            Add Task <FaPlus className="ml-2" />
-          </button>
-        </div>
-      </div>
+     <div className="flex flex-col justify-center items-center mb-12 scroll-m-3">
+  <h1 className="text-4xl font-bold mb-4 flex items-center">
+    <FaTasks className="inline-block mr-4" />
+    Task Manager
+  </h1>
+  <button
+    className="text-white px-4 py-2 rounded mt-2 flex items-center"
+    style={{ backgroundColor: "#007ab5" }}
+    onClick={handleFormToggler}
+  >
+    Add Task <FaPlus className="ml-2" />
+  </button>
+</div>
+
 
       {closedForm && (
         <div className="fixed inset-0 flex justify-center items-center z-10 bg-gray-500 bg-opacity-50">
