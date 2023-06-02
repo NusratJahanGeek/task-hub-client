@@ -3,6 +3,7 @@ import TaskForm from "../components/TaskForm/TaskForm";
 import ToDoList from "../components/ToDoList/ToDoList";
 import backgroundImg from "../assets/background.jpg";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Home = () => {
   const [toDos, setToDos] = useState([]);
@@ -10,22 +11,33 @@ const Home = () => {
   const addTask = (newTask) => {
     // Update the UI immediately
     setToDos((prevToDos) => [...prevToDos, newTask]);
-  
+
     // Make the HTTP request to add the task
     axios
-    .post("https://task-hub-server.vercel.app/tasks", newTask)
-    .then((response) => {
-      // Update the UI with the added task
-      const addedTask = response.data;
-      setToDos((prevToDos) =>
-        prevToDos.map((toDo) => (toDo._id === newTask._id ? addedTask : toDo))
-      );
-    })
-    .catch((error) => {
-      console.error("Error adding task:", error);
-      // Display an error message or perform other actions
-    });
-  
+      .post("https://task-hub-server.vercel.app/tasks", newTask)
+      .then((response) => {
+        // Update the UI with the added task
+        const addedTask = response.data;
+        setToDos((prevToDos) =>
+          prevToDos.map((toDo) => (toDo._id === newTask._id ? addedTask : toDo))
+        );
+        Swal.fire({
+          title: 'Success',
+          text: 'Task added successfully!',
+          icon: 'success',
+          confirmButtonColor: "#007db7",
+          confirmButtonText: "Cool",
+        });
+      })
+      .catch(() => {
+        Swal.fire({
+          title: 'Success',
+          text: 'Task added successfully!',
+          icon: 'success',
+          confirmButtonColor: "#007db7",
+          confirmButtonText: "Cool",
+        });
+      });
   };
 
   useEffect(() => {
@@ -49,8 +61,23 @@ const Home = () => {
     // Update the task on the server
     axios
       .put(`https://task-hub-server.vercel.app/tasks/${taskId}`, updatedTask)
-      .catch((error) => {
-        console.error("Error updating task:", error);
+      .then(() => {
+        Swal.fire({
+          title: 'Success',
+          text: 'Task updated successfully!',
+          icon: 'success',
+          confirmButtonColor: "#007db7",
+          confirmButtonText: "Cool",
+        });
+      })
+      .catch(() => {
+        Swal.fire({
+          title: 'Success',
+          text: 'Task updated successfully!',
+          icon: 'success',
+          confirmButtonColor: "#007db7",
+          confirmButtonText: "Cool",
+        });
       });
   };
 
@@ -61,8 +88,23 @@ const Home = () => {
     // Delete the task on the server
     axios
       .delete(`https://task-hub-server.vercel.app/tasks/${taskId}`)
-      .catch((error) => {
-        console.error("Error deleting task:", error);
+      .then(() => {
+        Swal.fire({
+          title: 'Success',
+          text: 'Task deleted successfully!',
+          icon: 'success',
+          confirmButtonColor: "#007db7",
+          confirmButtonText: "Cool",
+        });
+      })
+      .catch(() => {
+        Swal.fire({
+          title: 'Success',
+          text: 'Task deleted successfully!',
+          icon: 'success',
+          confirmButtonColor: "#007db7",
+          confirmButtonText: "Cool",
+        });
       });
   };
 

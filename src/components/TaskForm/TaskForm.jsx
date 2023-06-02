@@ -37,8 +37,8 @@ const TaskForm = ({ addTask }) => {
   return (
     <div>
       <div className="flex justify-center items-center mb-12 scroll-m-3">
-        <h1 className="text-4xl font-bold mr-6">
-          <FaTasks className="inline-block mr-2" />
+        <h1 className="text-4xl font-bold mr-6 flex items-center">
+          <FaTasks className="inline-block mr-4" />
           Task Manager
         </h1>
         <div className="flex items-center">

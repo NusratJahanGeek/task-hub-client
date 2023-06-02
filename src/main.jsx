@@ -6,6 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from './Layout/Home';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 const router = createBrowserRouter([
   {
