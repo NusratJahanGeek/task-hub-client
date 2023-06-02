@@ -1,48 +1,49 @@
-import './ToDo.css'
-const ToDo = ({ toDoText, toDos, setToDos, toDo }) => {
-    const handleCompleteTask = () => {
-      setToDos(
-        toDos.map((item) => {
-          if (item.id === toDo.id) {
-            return {
-              ...item,
-              completed: !item.completed,
-            };
-          }
-          return item;
-        })
-      );
-    };
+const ToDo = ({ toDo, handleCompleteTask, handleDeleteTask, draggable, onDragStart, onDragEnd, onDragOver, onDragEnter, onDragLeave, onDrop }) => {
   
-    const handleDeleteTask = () => {
-      setToDos(toDos.filter((item) => item.id !== toDo.id));
+  const handleComplete = (taskId, completed) => {
+    const updatedTask = {
+      ...toDo,
+      status: completed ? "Completed" : "Pending",
     };
-  
-    return (
-      <div className="flex items-center justify-between py-2">
-        <li
-          className={`todo ${toDo.completed ? "completed" : ""}`}
-          onClick={handleCompleteTask}
-        >
-          {toDoText}
-        </li>
-        <div>
-          <button
-            onClick={handleCompleteTask}
-            className="bg-green-500 text-white px-3 py-1 rounded mr-2"
-          >
-            Complete
-          </button>
-          <button
-            onClick={handleDeleteTask}
-            className="bg-red-500 text-white px-3 py-1 rounded"
-          >
-            Delete
-          </button>
-        </div>
-      </div>
-    );
+    handleCompleteTask(taskId, updatedTask);
   };
   
-  export default ToDo;
-  
+
+const handleDelete = (taskId) => {
+  handleDeleteTask(taskId);
+};
+
+
+  return (
+    <li
+      className="flex justify-between items-center bg-white p-4 rounded mb-4 shadow"
+      draggable={draggable}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      onDragOver={onDragOver}
+      onDragEnter={onDragEnter}
+      onDragLeave={onDragLeave}
+      onDrop={onDrop}
+    >
+      <div>
+        <h3 className="text-lg font-semibold">{toDo.title}</h3>
+        <p className="text-sm text-gray-500">{toDo.description}</p>
+      </div>
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          checked={toDo.status === "Completed"}
+          onChange={() => handleComplete(toDo._id, toDo.status === "Pending")}
+        />
+        <button
+          className="text-red-500 hover:text-red-700 ml-4"
+          onClick={() => handleDelete(toDo._id)}
+        >
+          Delete
+        </button>
+      </div>
+    </li>
+  );
+};
+
+export default ToDo;
