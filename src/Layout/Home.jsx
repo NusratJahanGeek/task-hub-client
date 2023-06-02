@@ -68,10 +68,10 @@ const Home = () => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-screen bg-cover"
+      className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
-      <div className="bg-white bg-opacity-75 rounded-md p-8 my-4">
+      <div className="bg-white bg-opacity-75 rounded-md p-8 px-4 my-4">
         <TaskForm addTask={addTask} />
         <ToDoList
           toDos={toDos}

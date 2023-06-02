@@ -34,6 +34,7 @@ const handleDelete = (taskId) => {
           type="checkbox"
           checked={toDo.status === "Completed"}
           onChange={() => handleComplete(toDo._id, toDo.status === "Pending")}
+          className="h-4 w-6 text-[#007ab5]"
         />
         <button
           className="text-red-500 hover:text-red-700 ml-4"

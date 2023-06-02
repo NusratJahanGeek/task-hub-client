@@ -65,7 +65,7 @@ const ToDoList = ({ toDos, updateTask, deleteTask }) => {
   const completedTasks = toDos.filter((task) => task.status === "Completed");
 
   return (
-    <div className="flex gap-8">
+    <div className="flex flex-col md:flex-row gap-8">
       <div className="card bg-slate-100 p-6 flex-grow-0"
         onDragOver={(event) => handleDragOver(event, "Pending")}
         onDragEnter={(event) => handleDragEnter(event, "Pending")}

@@ -54,7 +54,7 @@ const TaskForm = ({ addTask }) => {
 
       {closedForm && (
         <div className="fixed inset-0 flex justify-center items-center z-10 bg-gray-500 bg-opacity-50">
-          <div className="bg-white p-10 rounded w-96">
+          <div className="bg-white p-10 rounded sm:w-96 md:w-[75%] lg:w-[50%] xl:w-[40%]">
             <div className="flex justify-end -mt-4 mb-4">
               <button
                 className="text-gray-600 hover:text-gray-800"
