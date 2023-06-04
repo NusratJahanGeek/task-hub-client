@@ -3,7 +3,7 @@ import ToDo from "../ToDo/ToDo";
 
 const ToDoList = ({ toDos, updateTask, deleteTask }) => {
   const [draggedTask, setDraggedTask] = useState(null);
-  const [draggedOver, setDraggedOver] = useState(null);
+  const [, setDraggedOver] = useState(null);
 
   const handleDragStart = (taskId) => {
     setDraggedTask(taskId);
