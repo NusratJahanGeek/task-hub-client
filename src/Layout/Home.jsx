@@ -7,6 +7,10 @@ import Swal from "sweetalert2";
 
 const Home = () => {
   const [toDos, setToDos] = useState([]);
+  const [change, setChange] = useState(true);
+  const refetch = () => {
+    setChange(!change);
+  }
 
   const addTask = (newTask) => {
     setToDos((prevToDos) => [...prevToDos, newTask]);
@@ -17,6 +21,7 @@ const Home = () => {
         setToDos((prevToDos) =>
           prevToDos.map((toDo) => (toDo._id === newTask._id ? addedTask : toDo))
         );
+        refetch();
         Swal.fire({
           title: "Success",
           text: "Task added successfully!",
@@ -27,11 +32,12 @@ const Home = () => {
       });
   };
 
+  
   useEffect(() => {
     axios.get("https://task-hub-server.vercel.app/tasks").then((response) => {
       setToDos(response.data);
     });
-  }, []);
+  }, [change]);
 
   const updateTask = (taskId, updatedTask) => {
     // Update the UI immediately
@@ -44,6 +50,7 @@ const Home = () => {
     axios
       .put(`https://task-hub-server.vercel.app/tasks/${taskId}`, updatedTask)
       .then(() => {
+        refetch();
         Swal.fire({
           position: "top-end",
           icon: "success",
