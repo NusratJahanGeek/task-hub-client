@@ -26,6 +26,9 @@ Task Hub is a simple task manager web application that allows you to keep track 
 - Tailwind CSS: Utility-first CSS framework for styling the components.
 - HTML: Markup language for structuring the web page.
 - CSS: Stylesheet language for enhancing the visual presentation.
+- MongoDB: NoSQL database for storing data.
+- Express: Web application framework for Node.js.
+- Node.js: JavaScript runtime environment for server-side development.
 
 ## Getting Started
 
